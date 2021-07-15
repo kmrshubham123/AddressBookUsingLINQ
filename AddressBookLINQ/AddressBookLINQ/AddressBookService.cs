@@ -76,7 +76,16 @@ namespace AddressBookLINQ
             }
             Console.WriteLine("============Update Contact List====== \n");
             DisplayContacts(Editcontacts.CopyToDataTable());      // CopyToDataTable:-returns that contains copies of the System.Data.DataRow objects
-                                                               
+        }
+        public void DeleteContact(DataTable tables)
+        {
+            var Deletecontacts = table.AsEnumerable().Where(x => x.Field<string>("LastName") == "Anderson");
+            foreach (var row in Deletecontacts.ToList())
+            {
+                row.Delete();
+            }
+            Console.WriteLine("------------Deleted Contact Person List--------- \n");
+            DisplayContacts(table);
         }
 
     }
