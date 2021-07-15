@@ -116,6 +116,24 @@ namespace AddressBookLINQ
                              .GroupBy(x => x["State"].Equals("Bihar")).Count();
             Console.WriteLine("Number of Contact Person Belonging from Particular State is : "+ Allcontacts);
         }
+        /// <summary>
+        /// UC8:-Reterive Entries sorted alphabetically by Person Name
+        /// </summary>
+        /// <param name="table"></param>
+        public void SortPersonByName(DataTable tables)
+        {
+            var Sortcontacts = table.Rows.Cast<DataRow>()
+                           .OrderBy(x => x.Field<string>("FirstName"));
+            foreach (var contact in Sortcontacts)
+            {
+                Console.Write("First Name : " + contact.Field<string>("FirstName") + " " + "Last Name : " + contact.Field<string>("LastName")
+                  + " " + "Address : " + contact.Field<string>("Address") + " " + "City : " + contact.Field<string>("City")
+                  + " " + "State : " + contact.Field<string>("State") + " " + "Phone Number : " + contact.Field<string>("PhoneNumber")
+                  + " " + "Email : " + contact.Field<string>("Email"));
+                Console.WriteLine("\n");
+            }
+
+        }
 
     }
 }

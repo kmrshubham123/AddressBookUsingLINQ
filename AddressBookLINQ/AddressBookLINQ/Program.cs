@@ -21,6 +21,10 @@ namespace AddressBookLINQ
             //UC7:-Size of addressbook by state
             Console.WriteLine("==========================================");
             service.SizeOfAddressBookByState(dataTable);
+            //UC8:-Reterive Entries sorted alphabetically by Person Name
+            Console.WriteLine("==========================================");
+            service.SortPersonByName(dataTable);
+
         }
     }
 }
