@@ -11,8 +11,8 @@ namespace AddressBookLINQ
             AddressBookService service = new AddressBookService();
             DataTable dataTable = service.AddressBook();
             service.DisplayContacts(dataTable);
-
-
+            //UC4:-Edit Contacts
+            service.EditContact(dataTable);
         }
     }
 }

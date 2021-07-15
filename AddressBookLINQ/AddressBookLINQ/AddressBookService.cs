@@ -58,9 +58,24 @@ namespace AddressBookLINQ
                 Console.WriteLine("\n");
             }
         }
-
-
-
+        /// <summary>
+        /// UC4:-Edit Existing Contact Person Using Their Name
+        /// </summary>
+        /// <param name="table"></param>
+        public void EditContact(DataTable tables)
+        {
+            var Editcontacts = table.AsEnumerable().Where(x => x.Field<string>("FirstName") == "Ram");
+            foreach (var contact in Editcontacts)
+            {
+                contact.SetField("LastName", "Pandit");
+                contact.SetField("Address", "Kushumpur");
+                contact.SetField("City", "Siwan");
+                contact.SetField("State", "Bihar");
+            }
+            Console.WriteLine("============Update Contact List====== \n");
+            DisplayContacts(Editcontacts.CopyToDataTable());      // CopyToDataTable:-returns that contains copies of the System.Data.DataRow objects
+                                                               
+        }
 
     }
 }
