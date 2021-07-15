@@ -105,7 +105,16 @@ namespace AddressBookLINQ
                   + " " + "Email : " + contact.Field<string>("Email"));
                 Console.WriteLine("\n");
             }
-
+        }
+        /// <summary>
+        /// UC7:-Size of addressbook by state
+        /// </summary>
+        /// <param name="table"></param>
+        public void SizeOfAddressBookByState(DataTable tables)
+        {
+            var Allcontacts = table.Rows.Cast<DataRow>()
+                             .GroupBy(x => x["State"].Equals("Bihar")).Count();
+            Console.WriteLine("Number of Contact Person Belonging from Particular State is : "+ Allcontacts);
         }
 
     }

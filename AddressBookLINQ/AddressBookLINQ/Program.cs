@@ -18,6 +18,9 @@ namespace AddressBookLINQ
             //UC6:-Reterive Person Beloging to a State frrom Address Book
             Console.WriteLine("------------Particular person Belonging to their State--------- ");
             service.RetrieveContactBelongingToState(dataTable);
+            //UC7:-Size of addressbook by state
+            Console.WriteLine("==========================================");
+            service.SizeOfAddressBookByState(dataTable);
         }
     }
 }
