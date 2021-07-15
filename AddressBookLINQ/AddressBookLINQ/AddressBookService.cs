@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookLINQ
@@ -10,21 +11,56 @@ namespace AddressBookLINQ
     /// </summary>
     public class AddressBookService
     {
-        DataTable table = new DataTable("AddressBook");
+        /// <summary>
+        /// Create Data Table
+        /// </summary>
+        DataTable table = new DataTable();
         /// <summary>
         /// UC2:-Create a address Book Data Table with different Attributes
         /// </summary>
-        public void AddressBook()
+        public DataTable AddressBook()
         {
            
-            table.Columns.Add("FirstName");
-            table.Columns.Add("LastName");
-            table.Columns.Add("Address");
-            table.Columns.Add("City");
-            table.Columns.Add("State");
-            table.Columns.Add("Zip");
-            table.Columns.Add("PhoneNumber");
-            table.Columns.Add("Email");
+            table.Columns.Add("FirstName", typeof(string));
+            table.Columns.Add("LastName", typeof(string));
+            table.Columns.Add("Address", typeof(string));
+            table.Columns.Add("City", typeof(string));
+            table.Columns.Add("State", typeof(string));
+            table.Columns.Add("Zip", typeof(int));
+            table.Columns.Add("PhoneNumber", typeof(string));
+            table.Columns.Add("Email", typeof(string));
+
+            /// UC3:-Insert New Contact to Address Book
+
+            table.Rows.Add("Kumar", "Shubham", "Nai Sarai", "Bihar Sharif", "Bihar", 813101, "+91-7060731565", "kmrshubham123@gmail.com");
+            table.Rows.Add("Aman", "Kumar", "Amber", "Patna", "Bihar", 8000101, "9835434582", "Amankumar@gmail.com");
+            table.Rows.Add("stuti", "Raj", "Shastri Park", "North Delhi", "New Delhi", 230215, "9632651259", "StutiRaj@gmail.com");
+            table.Rows.Add("Alok", "Babu", "Ramgadhi", "Rampur", "Jharkhand", 306254, "+91-32659865476", "AlokBabu@gmail.com");
+            table.Rows.Add("Tom", "Anderson", "Chirst", "Portblair", "Goa", 305854, "+91-2369865476", "Tom12@gmail.com");
+            table.Rows.Add("Ram", "Kumar", "Rishra", "vardhman", "Kolkata", 236554, "+91-9859865476", "RamKumar@gmail.com");
+
+            return table;
         }
+        /// <summary>
+        /// Display Contact
+        /// </summary>
+        /// <param name="tables"></param>
+        public void DisplayContacts(DataTable tables)
+        {
+            var contacts = table.Rows.Cast<DataRow>(); //that contains the elements to be cast to type TResult.
+            foreach (var contact in contacts)
+            {
+                Console.Write("First Name : " + contact.Field<string>("FirstName") + " " + "Last Name : " + contact.Field<string>("LastName")
+                    + " " + "Address : " + contact.Field<string>("Address") + " " + "City : " + contact.Field<string>("City")
+                    + " " + "State : " + contact.Field<string>("State") + " " + "City : " + contact.Field<string>("City")
+                    + " " + "City : " + contact.Field<string>("City") + " " + "Phone Number : " + contact.Field<string>("PhoneNumber")
+                    + " " + "Email : " + contact.Field<string>("Email"));
+                Console.WriteLine("\n");
+            }
+        }
+
+
+
+
     }
 }
