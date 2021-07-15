@@ -52,8 +52,7 @@ namespace AddressBookLINQ
             {
                 Console.Write("First Name : " + contact.Field<string>("FirstName") + " " + "Last Name : " + contact.Field<string>("LastName")
                     + " " + "Address : " + contact.Field<string>("Address") + " " + "City : " + contact.Field<string>("City")
-                    + " " + "State : " + contact.Field<string>("State") + " " + "City : " + contact.Field<string>("City")
-                    + " " + "City : " + contact.Field<string>("City") + " " + "Phone Number : " + contact.Field<string>("PhoneNumber")
+                    + " " + "State : " + contact.Field<string>("State") + " " + "Phone Number : " + contact.Field<string>("PhoneNumber")
                     + " " + "Email : " + contact.Field<string>("Email"));
                 Console.WriteLine("\n");
             }
@@ -77,6 +76,10 @@ namespace AddressBookLINQ
             Console.WriteLine("============Update Contact List====== \n");
             DisplayContacts(Editcontacts.CopyToDataTable());      // CopyToDataTable:-returns that contains copies of the System.Data.DataRow objects
         }
+        /// <summary>
+        /// UC5:-Delete a Person Using Person name
+        /// </summary>
+        /// <param name="tables"></param>
         public void DeleteContact(DataTable tables)
         {
             var Deletecontacts = table.AsEnumerable().Where(x => x.Field<string>("LastName") == "Anderson");
@@ -86,6 +89,23 @@ namespace AddressBookLINQ
             }
             Console.WriteLine("------------Deleted Contact Person List--------- \n");
             DisplayContacts(table);
+        }
+        /// <summary>
+        /// UC6:-Reterive Person Beloging to a State frrom Address Book
+        /// </summary>
+        /// <param name="table"></param>
+        public void RetrieveContactBelongingToState(DataTable tables)
+        {
+            var Reterivecontacts = table.AsEnumerable().Where(x => x.Field<string>("State") == "Bihar");
+            foreach (var contact in Reterivecontacts)
+            {
+                Console.Write("First Name : " + contact.Field<string>("FirstName") + " " + "Last Name : " + contact.Field<string>("LastName")
+                  + " " + "Address : " + contact.Field<string>("Address") + " " + "City : " + contact.Field<string>("City")
+                  + " " + "State : " + contact.Field<string>("State") + " " + "Phone Number : " + contact.Field<string>("PhoneNumber")
+                  + " " + "Email : " + contact.Field<string>("Email"));
+                Console.WriteLine("\n");
+            }
+
         }
 
     }

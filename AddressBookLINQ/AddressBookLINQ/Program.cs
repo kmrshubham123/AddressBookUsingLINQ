@@ -15,6 +15,9 @@ namespace AddressBookLINQ
             service.EditContact(dataTable);
             //UC5:-Delete Contact
             service.DeleteContact(dataTable);
+            //UC6:-Reterive Person Beloging to a State frrom Address Book
+            Console.WriteLine("------------Particular person Belonging to their State--------- ");
+            service.RetrieveContactBelongingToState(dataTable);
         }
     }
 }
