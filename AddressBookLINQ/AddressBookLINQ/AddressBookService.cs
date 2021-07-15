@@ -71,6 +71,8 @@ namespace AddressBookLINQ
                 contact.SetField("Address", "Kushumpur");
                 contact.SetField("City", "Siwan");
                 contact.SetField("State", "Bihar");
+                contact.SetField("Email", "kmrRam156@gmail.com");
+
             }
             Console.WriteLine("============Update Contact List====== \n");
             DisplayContacts(Editcontacts.CopyToDataTable());      // CopyToDataTable:-returns that contains copies of the System.Data.DataRow objects
